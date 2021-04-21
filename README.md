@@ -10,7 +10,19 @@ cp -p .env.example .env
 
 ## Generating your secret keys
 
-To generate the values of the `ACCESS_TOKEN_SECRET` and `REFRESH_TOKEN_SECRET` secret keys, either use a really long password of your choice or generate one from [1Password](https://1password.com/password-generator/) or [Lastpass](https://www.lastpass.com/password-generator). Generally the tokens should be standard HSA 256 encryption for the signature to be at least be 32 characters long. When you created them just paste the values in your `.env` file.
+Access the `node` repl environment then generate the token with Crypto.
+
+```javascript
+> require('crypto').randomBytes(64).toString('hex')
+<your_secret_token_here>
+```
+
+Then paste them to `.env` file
+
+```bash
+ACCESS_TOKEN_SECRET=<your_access_token_secret>
+REFRESH_TOKEN_SECRET=<your_refresh_token_secret>
+```
 
 ## Supabase keys
 
